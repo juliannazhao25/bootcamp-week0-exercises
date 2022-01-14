@@ -10,6 +10,13 @@
     -> [2, 4, 6]
  */
 
-const myMap = (arr, f) => {}
+const myMap = (arr, f) => {
+  const [a, ...b] = arr
+  const result = [f(a)]
+  if (b.length > 0){
+    result.push.apply(result, myMap(b, f))
+  }
+  return result
+}
 
 module.exports = myMap
